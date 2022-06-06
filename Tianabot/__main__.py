@@ -231,28 +231,10 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-          first_name = update.effective_user.first_name
-          update.effective_message.reply_photo(
-                TIANA_IMG, caption="""*Hᴇʟʟᴏ {} !*
-───────────────────
-× *ഞാൻ ഒരു പാവം ഗ്രൂപ്പ്‌ മാനേജ്മെന്റ് ബോട്ട് ആണ് കേട്ടോ*
-× *ഞാൻ വളരെ വേഗത്തോടെയും കൃത്യതയോടെയും പ്രവർത്തിക്കും കൂടാതെ ഒരുപാട് പ്രതേകതകളും എനിക്കുണ്ട് 🌝!*
-───────────────────
-× *Uᴘᴛɪᴍᴇ:* `{}`
-× `{}` *Uꜱᴇʀ, Aᴄʀᴏꜱꜱ* `{}` *Cʜᴀᴛꜱ.*
-───────────────────""".format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(
-                 [
-                  [InlineKeyboardButton(text="ചാനൽ💞", url="https://t.me/Dream_with_Music"), 
-                   InlineKeyboardButton(text="🫂 സപ്പോർട്ട്💞", url=f"https://t.me/{SUPPORT_CHAT}")]
-                 ]
-              ),
-                parse_mode=ParseMode.MARKDOWN,              
-            )
+          update.effective_message.reply_text(
+            f"നിനക്കൊന്നും വേറെ ഒരു പണിയും ഇല്ലേ....",
+            parse_mode=ParseMode.HTML
+       )
 
 
 def error_handler(update, context):
