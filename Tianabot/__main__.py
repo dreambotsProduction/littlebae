@@ -235,8 +235,8 @@ def start(update: Update, context: CallbackContext):
           update.effective_message.reply_photo(
                 TIANA_IMG, caption="""*Hᴇʟʟᴏ {} !*
 ───────────────────
-× *I'ᴍ Aɴɪᴍᴇ-Tʜᴇᴍᴇ Gʀᴏᴜᴘ Mᴀɴᴀɢᴇᴍᴇɴᴛ Bᴏᴛ*
-× *I'ᴍ Vᴇʀʏ Fᴀꜱᴛ Aɴᴅ Mᴏʀᴇ Eꜰꜰɪᴄɪᴇɴᴛ I Pʀᴏᴠɪᴅᴇ Aᴡᴇꜱᴏᴍᴇ Fᴇᴀᴛᴜʀᴇꜱ!*
+× *ഞാൻ ഒരു പാവം ഗ്രൂപ്പ്‌ മാനേജ്മെന്റ് ബോട്ട് ആണ് കേട്ടോ*
+× *ഞാൻ വളരെ വേഗത്തോടെയും കൃത്യതയോടെയും പ്രവർത്തിക്കും കൂടാതെ ഒരുപാട് പ്രതേകതകളും എനിക്കുണ്ട് 🌝!*
 ───────────────────
 × *Uᴘᴛɪᴍᴇ:* `{}`
 × `{}` *Uꜱᴇʀ, Aᴄʀᴏꜱꜱ* `{}` *Cʜᴀᴛꜱ.*
@@ -247,8 +247,8 @@ def start(update: Update, context: CallbackContext):
                     sql.num_chats()),
                 reply_markup=InlineKeyboardMarkup(
                  [
-                  [InlineKeyboardButton(text="📄 Source", url="https://t.me/Dream_with_Music"), 
-                   InlineKeyboardButton(text="🫂 Support", url=f"https://t.me/{SUPPORT_CHAT}")]
+                  [InlineKeyboardButton(text="ചാനൽ💞", url="https://t.me/Dream_with_Music"), 
+                   InlineKeyboardButton(text="🫂 സപ്പോർട്ട്💞", url=f"https://t.me/{SUPPORT_CHAT}")]
                  ]
               ),
                 parse_mode=ParseMode.MARKDOWN,              
