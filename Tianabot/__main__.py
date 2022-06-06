@@ -724,7 +724,7 @@ Support
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="📄 𝙎𝙤𝙪𝙧𝙘𝙚", url="github.com/Prince-Botz/Tianabot"),                 
+                    InlineKeyboardButton(text="📄 𝙎𝙤𝙪𝙧𝙘𝙚", url="https://t.me/Dream_with_Music"),                 
                     InlineKeyboardButton(text="🔙 𝘽𝙖𝙘𝙠", callback_data="about_"),
                  ]    
                 ]
