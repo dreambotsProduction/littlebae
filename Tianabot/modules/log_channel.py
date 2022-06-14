@@ -1,7 +1,9 @@
 from datetime import datetime
 from functools import wraps
+
 from telegram.ext import CallbackContext
-from Yuriko.modules.helper_funcs.misc import is_module_loaded
+
+from Tianabot.modules.helper_funcs.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -11,9 +13,9 @@ if is_module_loaded(FILENAME):
     from telegram.ext import CommandHandler, JobQueue, run_async
     from telegram.utils.helpers import escape_markdown
 
-    from Yuriko import EVENT_LOGS, LOGGER, dispatcher
-    from Yuriko.modules.helper_funcs.chat_status import user_admin
-    from Yuriko.modules.sql import log_channel_sql as sql
+    from Tianabot import EVENT_LOGS, LOGGER, dispatcher
+    from Tianabot.modules.helper_funcs.chat_status import user_admin
+    from Tianabot.modules.sql import log_channel_sql as sql
 
     def loggable(func):
         @wraps(func)
@@ -97,6 +99,7 @@ if is_module_loaded(FILENAME):
                     + "\n\nFormatting has been disabled due to an unexpected error.",
                 )
 
+    @run_async
     @user_admin
     def logging(update: Update, context: CallbackContext):
         bot = context.bot
@@ -115,6 +118,7 @@ if is_module_loaded(FILENAME):
         else:
             message.reply_text("No log channel has been set for this group!")
 
+    @run_async
     @user_admin
     def setlog(update: Update, context: CallbackContext):
         bot = context.bot
@@ -158,6 +162,7 @@ if is_module_loaded(FILENAME):
                 " - forward the /setlog to the group\n"
             )
 
+    @run_async
     @user_admin
     def unsetlog(update: Update, context: CallbackContext):
         bot = context.bot
@@ -175,7 +180,7 @@ if is_module_loaded(FILENAME):
             message.reply_text("No log channel has been set yet!")
 
     def __stats__():
-        return f"× {sql.num_logchannels()} log channels set."
+        return f"• {sql.num_logchannels()} log channels set."
 
     def __migrate__(old_chat_id, new_chat_id):
         sql.migrate_chat(old_chat_id, new_chat_id)
@@ -187,30 +192,9 @@ if is_module_loaded(FILENAME):
             return f"This group has all it's logs sent to: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
         return "No log channel is set for this group!"
 
-
-    __help__ = """
-──「 Log channel 」──
-
-✗  /logchannel - `get log channel info`
-
-✗  /setlog - `set the log channel.`
-
-✗  /unsetlog - `unset the log channel.`
-
-*Setting the log channel is done by*:
-
-➩ `adding the bot to the desired channel (as an admin!)`
-➩ `sending /setlog in the channel`
-➩ `forwarding the /setlog to the group`
-
-*✗ Pᴏᴡᴇʀᴇᴅ 💕 Bʏ: BᴏᴛDᴜɴɪʏᴀ!*
-"""
-
-    __mod_name__ = "Lᴏɢ Cʜᴀɴɴᴇʟ​"
-
-    LOG_HANDLER = CommandHandler("logchannel", logging, run_async=True)
-    SET_LOG_HANDLER = CommandHandler("setlog", setlog, run_async=True)
-    UNSET_LOG_HANDLER = CommandHandler("unsetlog", unsetlog, run_async=True)
+    LOG_HANDLER = CommandHandler("logchannel", logging)
+    SET_LOG_HANDLER = CommandHandler("setlog", setlog)
+    UNSET_LOG_HANDLER = CommandHandler("unsetlog", unsetlog)
 
     dispatcher.add_handler(LOG_HANDLER)
     dispatcher.add_handler(SET_LOG_HANDLER)
